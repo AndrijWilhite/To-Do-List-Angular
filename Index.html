@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DO IT!!!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+</head>
+<div class="jumbotron">
+    <h1>To Do List</h1>
+</div>
+<div class='container'>
+
+    <body>
+
+
+        <div ng-app="app">
+            <div ng-controller="todo as todo">
+                <input type="text" placeholder="Add Item" ng-model="todo.newItem.name"></input>
+                <select type="text" ng-model="todo.newItem.priority" ng-options="prior.type for prior in todo.prior"></select>
+                <button ng-click="todo.addToDo()" class="btn btn-danger">Click To Add</button>
+
+
+
+                <table class="table">
+                  <!--Something here is broken the 'medium' priority doesnt sort correctly -->
+                    <tr>
+                        <th><button ng-click="todo.sortfield='priority.value'">Order by Highest Priority</button></th>
+                        <th><button ng-click="todo.sortfield='-priority.value'">Order by Lowest Priority</button></th>
+                        <th><button ng-click="todo.sortfield='name'">Order Alphabetically</button></th>
+                    </tr>
+
+                    <tr ng-repeat="item in todo.ToDoItem | orderBy: todo.sortfield">
+                        <td>{{item.name}}</td>
+                        <td> {{item.priority.type}}
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+
+        </div>
+</div>
+</div>
+<script src="index.js"></script>
+<script src="stylesheet.css"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</body>
+
+<footer>
+</footer>
+
+</html>
