@@ -1,0 +1,22 @@
+{
+  "name": "bower.json",
+  "description": "To Do list in angular",
+  "main": "index.js",
+  "authors": [
+    "Andrij Wilhite"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angular",
+    "html",
+    "bootstrap"
+  ],
+  "homepage": "https://github.com/AndrijWilhite/To-Do-List-Angular",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

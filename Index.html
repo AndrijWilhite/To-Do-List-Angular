@@ -1,58 +1,48 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DO IT!!!</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
-<div class="jumbotron">
-    <h1>To Do List</h1>
-</div>
-<div class='container'>
 
-    <body>
-
-
-        <div ng-app="app">
-            <div ng-controller="todo as todo">
-                <input type="text" placeholder="Add Item" ng-model="todo.newItem.name"></input>
-                <select type="text" ng-model="todo.newItem.priority" ng-options="prior.type for prior in todo.prior"></select>
-                <button ng-click="todo.addToDo()" class="btn btn-danger">Click To Add</button>
-
-
-
+<body ng-controller="TodoController as todo">
+    <div class="jumbotron" style="text-align: center;">
+        <h1>To Do List</h1>
+        <h3 style="font-style: italic; color:pink;text-decoration: underline;">get it done!</h3>
+    </div>
+    <div class='container'>
+        <div>
+            <div>
+                <div class='center-block' style="text-align: center;">
+                    <input type="text" placeholder="Deal With It" ng-model="todo.newItem.name"></input>
+                    <select type="text" ng-model="todo.newItem.priority" ng-options="priority.type for priority in todo.priorities"></select>
+                    <button ng-click="todo.addTodo()" class="btn btn-danger">Put it on the List</button>
+                </div>
                 <table class="table">
-                  <!--Something here is broken the 'medium' priority doesnt sort correctly -->
-                    <tr>
-                        <th><button ng-click="todo.sortfield='priority.value'">Order by Highest Priority</button></th>
-                        <th><button ng-click="todo.sortfield='-priority.value'">Order by Lowest Priority</button></th>
-                        <th><button ng-click="todo.sortfield='name'">Order Alphabetically</button></th>
-                    </tr>
-
-                    <tr ng-repeat="item in todo.ToDoItem | orderBy: todo.sortfield">
-                        <td>{{item.name}}</td>
-                        <td> {{item.priority.type}}
-                        </td>
-                    </tr>
-
+                    <!--Something here is broken the 'medium' priority doesnt sort correctly -->
+                    <thead>
+                        <tr>
+                            <th><button ng-click="todo.sortField='priority.value'">Order by Highest Priority</button></th>
+                            <th><button ng-click="todo.sortField='-priority.value'">Order by Lowest Priority</button></th>
+                            <th><button ng-click="todo.sortField='name'">Order Alphabetically</button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in todo.todoItems | orderBy: todo.sortField">
+                            <td>{{item.name}}</td>
+                            <td>{{item.priority.type}}</td>
+                        </tr>
+                    </tbody>
                 </table>
-
             </div>
-
-
-
         </div>
-</div>
-</div>
-<script src="index.js"></script>
-<script src="stylesheet.css"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/todo/todo.controller.js"></script>
 </body>
-
-<footer>
-</footer>
 
 </html>

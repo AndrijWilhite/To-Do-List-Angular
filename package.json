@@ -1,0 +1,30 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "To Do list in angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrijWilhite/To-Do-List-Angular.git"
+  },
+  "keywords": [
+    "angular",
+    "html",
+    "bootstrap"
+  ],
+  "author": "Andrij Wilhite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrijWilhite/To-Do-List-Angular/issues"
+  },
+  "homepage": "https://github.com/AndrijWilhite/To-Do-List-Angular#readme",
+  "dependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
+    "wiredep": "^4.0.0"
+  }
+}
