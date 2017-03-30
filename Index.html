@@ -17,23 +17,23 @@
         <div>
             <div>
                 <div class='center-block' style="text-align: center;">
-                    <input type="text" placeholder="Deal With It" ng-model="todo.newItem.name"></input>
-                    <select type="text" ng-model="todo.newItem.priority" ng-options="priority.type for priority in todo.priorities"></select>
-                    <button ng-click="todo.addTodo()" class="btn btn-danger">Put it on the List</button>
+                    <input type="text"  placeholder="Deal With It" ng-model="todo.newItem.text"></input>
+                    <select type="text" ng-model="todo.newItem.priority" ng-options="priority for priority in todo.priorities"></select>
+                    <button ng-click="todo.addTodo(); clearSkyRadio()" class="btn btn-danger">Put it on the List</button>
                 </div>
                 <table class="table">
-                    <!--Something here is broken the 'medium' priority doesnt sort correctly -->
                     <thead>
                         <tr>
-                            <th><button ng-click="todo.sortField='priority.value'">Order by Highest Priority</button></th>
-                            <th><button ng-click="todo.sortField='-priority.value'">Order by Lowest Priority</button></th>
-                            <th><button ng-click="todo.sortField='name'">Order Alphabetically</button></th>
+                            <th><button ng-click="todo.sortField='priority'">Order by Highest Priority</button></th>
+                            <th><button ng-click="todo.sortField='-priority'">Order by Lowest Priority</button></th>
+                            <th><button ng-click="todo.sortField='text'">Order Alphabetically</button></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="list">
                         <tr ng-repeat="item in todo.todoItems | orderBy: todo.sortField">
-                            <td>{{item.name}}</td>
-                            <td>{{item.priority.type}}</td>
+                            <td>{{item.text}}</td>
+                            <td>{{item.priority}}</td>
+                            <td><button ng-click="todo.byebye(item)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -43,6 +43,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/todo/todo.controller.js"></script>
+    <script src="app/todo/todo.factory.js"></script>
 </body>
 
 </html>

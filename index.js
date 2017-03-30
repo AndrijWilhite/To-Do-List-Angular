@@ -1,34 +1,6 @@
-angular.module("app", []);
-angular
-    .module("app")
-    .controller("todo", todo);
-
-function todo() {
-    var vm = this;
-
-    vm.addToDo = function(name, priority) {
-        vm.ToDoItem.push(vm.newItem);
-        vm.newItem = {};
-
-    };
-    vm.ToDoItem = [
-
-    ]
-
-vm.sortfield='';
-
-
-    vm.prior = [{
-            type: 'High',
-            value: 1
-        },
-        {
-            type: 'Medium',
-            value: 2
-        },
-        {
-            type: 'Low',
-            value: 3
-        }
-    ]
+var cells = document.getElementById("list").getElementsByTagName("td");
+for (var i = 0; i < cells.length; i++) {
+    if (cells[i].innerHTML == "one") {
+        cells[i].style.backgroundColor = "red";
+    }
 }

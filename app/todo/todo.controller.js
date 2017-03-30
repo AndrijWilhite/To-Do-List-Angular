@@ -5,30 +5,45 @@
         .module('app')
         .controller('TodoController', TodoController);
 
-    TodoController.$inject = [];
+    TodoController.$inject = ['todoFactory'];
 
     /* @ngInject */
-    function TodoController() {
+    function TodoController(todoFactory) {
         var vm = this;
 
         vm.todoItems = [];
         vm.sortField='';
-        vm.priorities = [{
-                type: 'High',
-                value: 1
-            },
-            {
-                type: 'Medium',
-                value: 2
-            },
-            {
-                type: 'Low',
-                value: 3
-            }];
-
-        vm.addTodo = function(name, priority) {
-            vm.todoItems.push(vm.newItem);
-            vm.newItem = {};
+        vm.priorities = [1,2,3];
+        activate ();
+        function activate(){
+          todoFactory
+          .getAll()
+          .then(function(data){
+            vm.todoItems=data;
+          });
+        }
+        vm.addTodo = function() {
+          todoFactory
+          .create({
+            "text": vm.newItem.text,
+            "priority": vm.newItem.priority
+          })
+          .then(function(data){
+            vm.todoItems.push(data);
+          });
         };
+        vm.byebye = function(todoItem) {
+          todoFactory
+          .remove(
+              todoItem.todoItemID
+          )
+          .then(function(data){
+              vm.todoItems.splice(vm.todoItems.indexOf(todoItem),1);
+          });
+        };
+        vm.clearSkyRadio = function(){
+          todo.inField = "";
+          todo.inField2 = "";
+        }
     }
 })();
